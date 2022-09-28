@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Laris"
         tools:targetApi="31">
         <activity
-            android:name=".RecoveryPasswordActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".WelcomeActivity"
@@ -23,7 +23,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".RecoveryPasswordActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
