@@ -147,7 +147,7 @@
         android:layout_marginTop="20dp"
         android:text="Erro"
         android:fontFamily="@font/inter_regular"
-        android:textColor="#f00"
+        android:textColor="@color/red"
         android:textSize="16dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"

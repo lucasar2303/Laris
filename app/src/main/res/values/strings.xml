@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Laris</string>
+
+    <string-array name="generos">
+        <item>Masculino</item>
+        <item>Feminino</item>
+        <item>Não Informar</item>
+    </string-array>
+
+    <string name="preference_file_key_register">com.example.sharedpreference.PREFERENCE_FILE_KEY</string>
 </resources>
