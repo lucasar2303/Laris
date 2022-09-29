@@ -45,6 +45,15 @@ public class SignupPersonalActivity extends AppCompatActivity {
         binding.btnEnviar.setOnClickListener(view -> validaDados());
         Toast.makeText(this, binding.etSpinner.getText(), Toast.LENGTH_SHORT).show();
 
+        binding.imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
 
@@ -59,9 +68,9 @@ public class SignupPersonalActivity extends AppCompatActivity {
         editor.putString("genero", genero);
         editor.commit();
 
-//        Intent intent = new Intent(getApplicationContext(), SignupPhotoActivity.class);
-//        startActivity(intent);
-//        finish();
+        Intent intent = new Intent(getApplicationContext(), SignupPhotoActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void validaDados(){

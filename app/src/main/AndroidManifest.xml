@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Laris"
         tools:targetApi="31">
         <activity
+            android:name=".SignupPersonalActivity"
+            android:exported="false" />
+        <activity
             android:name=".RecoveryPasswordActivity"
             android:exported="false" />
         <activity
@@ -26,7 +29,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SignupPersonalActivity"
+            android:name=".SignupPhotoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

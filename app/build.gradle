@@ -42,4 +42,8 @@ dependencies {
 
     // Maskara
     implementation 'com.github.santalu:maskara:1.0.0'
+
+    //CircleImage
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
 }

@@ -28,5 +28,15 @@ public class WelcomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        binding.btnCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SignupPersonalActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }

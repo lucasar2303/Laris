@@ -39,6 +39,15 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        binding.tvCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SignupPersonalActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void verificaDados(){
