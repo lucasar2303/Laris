@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.laris">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,25 +16,28 @@
         android:theme="@style/Theme.Laris"
         tools:targetApi="31">
         <activity
-            android:name=".SignupContactActivity"
+            android:name=".Login.WelcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".SignupPersonalActivity"
+            android:name=".Register.SignupContactActivity"
             android:exported="false" />
         <activity
-            android:name=".RecoveryPasswordActivity"
+            android:name=".Register.SignupPersonalActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Login.RecoveryPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".Login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Register.SignupPhotoActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SignupPhotoActivity"
+            android:name=".Register.SignupPasswordActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

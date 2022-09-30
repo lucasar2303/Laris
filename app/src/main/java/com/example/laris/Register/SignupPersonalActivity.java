@@ -1,4 +1,4 @@
-package com.example.laris;
+package com.example.laris.Register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.example.laris.Login.LoginActivity;
+import com.example.laris.R;
 import com.example.laris.databinding.ActivitySignupPersonalBinding;
 
 import java.text.ParseException;

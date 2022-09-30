@@ -1,12 +1,13 @@
-package com.example.laris;
+package com.example.laris.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
+import com.example.laris.R;
+import com.example.laris.Register.SignupPersonalActivity;
 import com.example.laris.databinding.ActivityWelcomeBinding;
 
 public class WelcomeActivity extends AppCompatActivity {

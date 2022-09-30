@@ -1,4 +1,4 @@
-package com.example.laris;
+package com.example.laris.Register;
 
 import static java.lang.System.out;
 
@@ -10,21 +10,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.laris.R;
+import com.example.laris.Register.SignupContactActivity;
+import com.example.laris.Register.SignupPersonalActivity;
 import com.example.laris.databinding.ActivitySignupPhotoBinding;
 
-import java.io.File;
 import java.io.IOException;
 
 public class SignupPhotoActivity extends AppCompatActivity {
@@ -40,13 +39,10 @@ public class SignupPhotoActivity extends AppCompatActivity {
         binding = ActivitySignupPhotoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.imgBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignupPersonalActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        binding.imgBack.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), SignupPersonalActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         binding.btnEnviar.setOnClickListener(view -> enviaDados());

@@ -1,4 +1,4 @@
-package com.example.laris;
+package com.example.laris.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.example.laris.Register.SignupPersonalActivity;
 import com.example.laris.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
