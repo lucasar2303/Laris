@@ -6,7 +6,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -29,7 +31,8 @@ public class SignupPhotoActivity extends AppCompatActivity {
 
     private ActivitySignupPhotoBinding binding;
     private Uri mSelectedUri;
-    Bitmap bitmap =  null;
+    private Bitmap bitmap =  null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,8 @@ public class SignupPhotoActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        binding.btnEnviar.setOnClickListener(view -> enviaDados());
 
         binding.imgPhoto.setOnClickListener(view -> selectPhoto());
     }
@@ -64,9 +69,6 @@ public class SignupPhotoActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK){
 
                 mSelectedUri = data.getData();
-                File auxFile = new File(mSelectedUri.getPath());
-
-
                 try {
                     bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mSelectedUri);
                     carrega(bitmap);
@@ -98,6 +100,25 @@ public class SignupPhotoActivity extends AppCompatActivity {
         Bitmap rtbitmap = Bitmap.createBitmap(bitmap, 0,0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
         rtbitmap.compress(Bitmap.CompressFormat.JPEG, 10, out);
         binding.imgPhoto.setImageBitmap(rtbitmap);
+
+    }
+
+    private void enviaDados(){
+
+        if (bitmap != null){
+
+            SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key_register), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("pathimg" , mSelectedUri.toString());
+            editor.commit();
+
+            Intent intent = new Intent(getApplicationContext(), SignupContactActivity.class);
+            startActivity(intent);
+            finish();
+        }else  {
+            Toast.makeText(this, "Selecione sua foto", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
