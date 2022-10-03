@@ -70,9 +70,8 @@ public class SignupContactActivity extends AppCompatActivity {
 
         editor.commit();
 
-        Toast.makeText(this, "CERTO", Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(getApplicationContext(), SignupPhotoActivity.class);
-//        startActivity(intent);
-//        finish();
+        Intent intent = new Intent(getApplicationContext(), SignupPasswordActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

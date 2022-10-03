@@ -51,7 +51,7 @@ public class SignupPhotoActivity extends AppCompatActivity {
     }
 
     private void selectPhoto(){
-        Intent intent = new Intent(Intent.ACTION_PICK);
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.setType("image/*");
         startActivityForResult(intent, 0);
     }

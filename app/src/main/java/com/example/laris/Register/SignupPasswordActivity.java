@@ -2,7 +2,9 @@ package com.example.laris.Register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,12 +14,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.laris.Login.LoginActivity;
+import com.example.laris.R;
 import com.example.laris.databinding.ActivitySignupPasswordBinding;
 
 public class SignupPasswordActivity extends AppCompatActivity {
 
     private ActivitySignupPasswordBinding binding;
     private boolean confirm1 = false, confirm2 = false, confirm3 = false, confirm4 = false;
+    private String senha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class SignupPasswordActivity extends AppCompatActivity {
         binding.btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SignupPasswordActivity.this, "CERTO", Toast.LENGTH_SHORT).show();
+                enviaDados();
             }
         });
 
@@ -51,7 +55,7 @@ public class SignupPasswordActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String senha = binding.etSenha.getText().toString();
+                senha = binding.etSenha.getText().toString();
                 String senhaTrue = binding.etSenhaTrue.getText().toString();
                 boolean supConfirm3 = false;
                 boolean supConfirm2 = false;
@@ -117,7 +121,7 @@ public class SignupPasswordActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String senha = binding.etSenha.getText().toString();
+                senha = binding.etSenha.getText().toString();
                 String senhaTrue = binding.etSenhaTrue.getText().toString();
 
                 if (senha.equals(senhaTrue)){
@@ -149,5 +153,17 @@ public class SignupPasswordActivity extends AppCompatActivity {
             binding.btnEnviar.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#CCCCCC")));
         }
 
+    }
+    private void enviaDados(){
+
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key_register), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("senha", senha);
+
+        editor.commit();
+
+        Intent intent = new Intent(getApplicationContext(), SignupConfirmActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

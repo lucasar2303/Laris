@@ -45,7 +45,6 @@ public class SignupPersonalActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnEnviar.setOnClickListener(view -> validaDados());
-        Toast.makeText(this, binding.etSpinner.getText(), Toast.LENGTH_SHORT).show();
 
         binding.imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
