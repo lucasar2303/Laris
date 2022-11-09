@@ -14,7 +14,7 @@
             android:id="@+id/menutop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="@color/preto_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -55,7 +55,7 @@
             android:paddingVertical="10dp"
             android:paddingStart="15dp"
             android:background="@drawable/btn_gradient"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/preto_1"
             android:text="Serviço"
             android:fontFamily="@font/inter_regular"
             android:textColor="@color/white"
@@ -116,7 +116,7 @@
             android:paddingVertical="10dp"
             android:paddingStart="15dp"
             android:background="@drawable/btn_gradient"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/preto_1"
             android:text="Montagem e Conserto"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -180,7 +180,7 @@
             android:paddingVertical="10dp"
             android:paddingStart="15dp"
             android:background="@drawable/btn_gradient"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/preto_1"
             android:text="Tipo de Contrato"
             android:fontFamily="@font/inter_regular"
             android:textColor="@color/white"
@@ -226,7 +226,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_gradient"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/preto_1"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -293,7 +293,7 @@
             android:paddingVertical="10dp"
             android:paddingHorizontal="20dp"
             android:background="@drawable/btn_gradient"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/preto_1"
             android:text="Data de visita"
             android:textColor="@color/white"
             android:visibility="gone"
@@ -310,7 +310,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvVisita"
             android:background="@drawable/btn_gradient"
-            android:backgroundTint="@color/black">
+            android:backgroundTint="@color/preto_1">
 
             <TextView
                 android:id="@+id/tvEndereco"

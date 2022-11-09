@@ -31,6 +31,8 @@
         <item name="android:scrollbarThumbVertical">@color/preto_2</item>
     </style>
 
+
+
     <style name="InputLayout_Dropdown" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="boxBackgroundColor">@color/white</item>
     </style>

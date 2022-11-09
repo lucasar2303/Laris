@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RequestServiceActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/preto_1"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgUser"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/icon_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="Nome"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            app:layout_constraintStart_toEndOf="@+id/imgUser"
+            app:layout_constraintTop_toTopOf="@+id/imgUser" />
+
+        <TextView
+            android:id="@+id/tvProfissao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular"
+            android:text="Profissão"
+            android:textColor="@color/gray_laris"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="@+id/tvNome"
+            app:layout_constraintTop_toBottomOf="@+id/tvNome" />
+
+        <ImageView
+            android:id="@+id/imgStar"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="5dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toStartOf="@+id/tvAvaliacao"
+            app:layout_constraintTop_toTopOf="@+id/imgUser"
+            app:srcCompat="@drawable/icon_star" />
+
+        <TextView
+            android:id="@+id/tvAvaliacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/inter_regular"
+            android:text="5,00"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgStar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgStar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--Pintura - Cancelar @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+    <TextView
+        android:id="@+id/tvServico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Pintura"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    <TextView
+        android:id="@+id/tvCancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:paddingVertical="10dp"
+        android:text="Cancelar"
+        android:textColor="@color/red"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/gray2_laris"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/textTipoDeContrato"
+        app:layout_constraintGuide_percent="0.2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--Tipo de contrato - Valor @@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/gray2_laris"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent="0.32"
+        app:layout_constraintTop_toBottomOf="@+id/tvContrato" />
+
+    <TextView
+        android:id="@+id/textTipoDeContrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Tipo de contrato"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvContrato"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline8" />
+
+    <TextView
+        android:id="@+id/tvContrato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Diária"
+        android:textColor="@color/roxo"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTipoDeContrato" />
+
+    <TextView
+        android:id="@+id/textValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Valor"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textTipoDeContrato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textTipoDeContrato" />
+
+    <TextView
+        android:id="@+id/tvValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="R$ 50,00"
+        android:textColor="@color/roxo"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvContrato"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvContrato" />
+
+    <!--Descricao - Datas @@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/gray2_laris"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDataSaida">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Descrição do serviço"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
+
+    <EditText
+        android:id="@+id/etDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edit_text_multiline"
+        android:ems="10"
+        android:maxLength="70"
+        android:gravity="start|top"
+        android:hint="Descreva o serviço em poucas palavras"
+        android:inputType="textMultiLine"
+        android:padding="5dp"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDescricao" />
+
+    <TextView
+        android:id="@+id/textDataVisita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Data de Visita"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDescricao" />
+
+    <TextView
+        android:id="@+id/tvDataVisita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="09/11/2022"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/textDataVisita"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textDataVisita" />
+
+    <TextView
+        android:id="@+id/textDataEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Data de Entrada"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDataVisita" />
+
+    <TextView
+        android:id="@+id/tvDataEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="09/11/2022"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/textDataEntrada"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textDataEntrada" />
+
+    <TextView
+        android:id="@+id/textDataSaida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Data de Saída"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDataEntrada" />
+
+    <TextView
+        android:id="@+id/tvDataSaida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="12/11/2022"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/textDataSaida"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textDataSaida" />
+
+
+
+
+
+
+
+    <!--Pagamento - Valor total @@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+
+    <TextView
+        android:id="@+id/textValorTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Valor total"
+        android:textColor="@color/preto_1"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvValorTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvValorTotal" />
+
+    <TextView
+        android:id="@+id/textPagamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Opção de pagamento"
+        android:textColor="@color/preto_1"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textValorTotal" />
+
+    <TextView
+        android:id="@+id/tvValorTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="R$ 350,00"
+        android:textColor="@color/preto_1"
+        android:textSize="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutSpinner"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:elevation="1dp"
+        app:boxBackgroundColor="@color/preto_1"
+        app:boxStrokeColor="@color/gray_laris"
+        app:layout_constraintBottom_toBottomOf="@+id/textPagamento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="@+id/textPagamento">
+
+        <AutoCompleteTextView
+            android:id="@+id/etSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="Dinheiro"
+            android:textColor="@color/white"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/roxo"
+        android:text="Solicitar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <!--Pagamento - Valor total @@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
