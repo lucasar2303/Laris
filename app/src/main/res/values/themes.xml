@@ -19,6 +19,10 @@
         <item name="android:windowBackground">@drawable/splash_bg</item>
     </style>
 
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
     <style name="AutoComplete" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="backgroundTint">@color/white</item>
     </style>

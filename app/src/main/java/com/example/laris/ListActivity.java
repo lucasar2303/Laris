@@ -4,11 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.laris.databinding.ActivityListBinding;
+
 public class ListActivity extends AppCompatActivity {
+
+    ActivityListBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        binding = ActivityListBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.imgBack.setOnClickListener(view -> finish());
     }
 }
