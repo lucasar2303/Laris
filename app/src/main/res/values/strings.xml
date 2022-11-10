@@ -13,4 +13,21 @@
     </string-array>
 
     <string name="preference_file_key_register">com.example.sharedpreference.PREFERENCE_FILE_KEY</string>
+
+
+    <string name="terms">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam hendrerit vestibulum velit non laoreet. Curabitur accumsan posuere justo, quis egestas libero porttitor quis. Etiam magna nulla, eleifend a quam a, iaculis cursus lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis faucibus erat at mauris consectetur placerat. Ut porttitor posuere imperdiet. Ut massa lorem, blandit ut nibh id, facilisis gravida augue. Sed in ligula felis. Maecenas convallis tincidunt facilisis.\n\n
+
+Etiam euismod turpis mauris, ac cursus erat interdum nec. Pellentesque dapibus tellus ipsum. Quisque volutpat ante aliquam diam viverra, eu placerat magna elementum. Aenean vehicula dignissim justo non mollis. Suspendisse tempus ullamcorper massa ut blandit. Donec posuere urna lacus, vitae ornare neque tincidunt ac. Vivamus auctor eget sapien in venenatis.\n\n
+
+Duis maximus mauris urna, at rhoncus lectus iaculis ac. In non sem id lacus tempor vehicula. Donec nec vestibulum turpis, vitae dignissim tellus. Morbi pretium tristique tellus, vitae varius neque mattis in. Morbi ullamcorper sapien vitae libero egestas, sed egestas ipsum pharetra. Curabitur id ex mauris. Phasellus pretium dolor ante, sit amet maximus nisi fringilla et. Ut accumsan leo ut odio consectetur, id malesuada odio ultricies. Etiam non urna a enim laoreet semper id vel dolor. Proin porta, dolor porttitor elementum dapibus, lacus nisl elementum lacus, vel rhoncus odio nisi eu ante. Mauris mollis placerat erat. Sed sodales at neque in laoreet. Aenean id pretium nunc.</string>
+
+    <string name="privacy">
+Aenean consectetur, elit hendrerit vulputate venenatis, enim purus condimentum felis, non tristique dui diam ut diam. Quisque nec turpis nec sem suscipit tristique nec eget nisl. Curabitur lacus nisl, ultricies a imperdiet fermentum, laoreet vel tortor. Nulla sed metus dolor. Cras imperdiet arcu velit, ut efficitur velit tempus quis. Phasellus in tempus neque, quis lacinia dui. Sed ut eros libero. Quisque eleifend lacus sit amet pharetra pretium. Proin commodo dictum faucibus. Etiam pharetra nulla libero, sit amet pretium sapien vulputate in.\n\n
+
+Sed commodo nibh lectus, sed mollis sem hendrerit at. Phasellus nec scelerisque tortor. Nam nec ante neque. Nulla congue auctor nibh, ac tempus odio porta quis. Etiam quis mi id nisi hendrerit pretium. Nam fringilla nisl et libero dictum, id porta nibh rhoncus. Nullam nec egestas elit, sed vestibulum metus. Praesent sagittis sed elit ut laoreet. Mauris vel sagittis lectus, efficitur efficitur purus. Proin ac luctus nibh, vel ornare nisi. Praesent varius urna in enim porttitor ullamcorper. Sed sodales tincidunt metus at sollicitudin. Nam cursus vitae nulla pretium porttitor. Ut interdum lacus sed imperdiet interdum.\n\n
+
+Donec aliquet rutrum accumsan. Sed purus ligula, vulputate ut sollicitudin sed, eleifend non metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mollis risus nec purus faucibus, et elementum odio tincidunt. Ut sed dignissim est. Sed consequat, felis vel suscipit luctus, urna lacus posuere libero, at facilisis dolor risus ut ligula. Sed eget justo eu nisl rhoncus placerat in eget nulla. Nunc mollis lorem est. Vivamus enim massa, efficitur et nisl a, vulputate tempus purus. Nunc faucibus at est in tempus.</string>
+
+
 </resources>
