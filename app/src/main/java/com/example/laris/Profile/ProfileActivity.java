@@ -1,0 +1,54 @@
+package com.example.laris.Profile;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.laris.Login.LoginActivity;
+import com.example.laris.MainActivity;
+import com.example.laris.R;
+import com.example.laris.databinding.ActivityProfileBinding;
+
+public class ProfileActivity extends AppCompatActivity {
+
+    private ActivityProfileBinding binding;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityProfileBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.layoutSair.setOnClickListener(view -> showDialogDelete());
+    }
+
+    private void showDialogDelete(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(ProfileActivity.this).inflate(R.layout.dialog_logout, (LinearLayout)findViewById(R.id.dialogLinearLayout));
+        builder.setView(view);
+
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.btnSim).setOnClickListener(view12 -> {
+            newActivty(LoginActivity.class);
+            alertDialog.dismiss();
+        });
+
+        view.findViewById(R.id.btnNao).setOnClickListener(view1 -> {
+            alertDialog.dismiss();
+        });
+
+        alertDialog.show();
+    }
+
+    private void newActivty(Class c ){
+        Intent intent = new Intent(getApplicationContext(), c);
+        startActivity(intent);
+    }
+}

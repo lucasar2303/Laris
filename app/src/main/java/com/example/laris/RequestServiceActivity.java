@@ -2,6 +2,7 @@ package com.example.laris;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,6 +41,8 @@ public class RequestServiceActivity extends AppCompatActivity {
         binding = ActivityRequestServiceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.tvCancelar.setOnClickListener(view -> finish());
+
         nome = "Lucas";
         profissao = "Pintor";
         avaliacao = "4,9";
@@ -56,11 +59,12 @@ public class RequestServiceActivity extends AppCompatActivity {
         dataVisita = "15/11/2022";
 
  */
-
         iniciaComponents();
+    }
 
-
-
+    private void newActivty(Class c ){
+        Intent intent = new Intent(getApplicationContext(), c);
+        startActivity(intent);
     }
 
     private void iniciaComponents(){

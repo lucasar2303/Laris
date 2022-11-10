@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF4040</color>
     <color name="gray_laris">#999999</color>
+    <color name="gray1_laris">#E7E7E7</color>
     <color name="gray2_laris">#CCCCCC</color>
+    <color name="gray3_laris">#555555</color>
 
 </resources>
