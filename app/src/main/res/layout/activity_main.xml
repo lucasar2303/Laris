@@ -59,7 +59,7 @@
             app:srcCompat="@drawable/icon_help" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/btnNotify"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="15dp"

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.laris.Login.LoginActivity;
 import com.example.laris.MainActivity;
+import com.example.laris.Notify.NotificationsActivity;
 import com.example.laris.R;
 import com.example.laris.databinding.ActivityProfileBinding;
 
@@ -26,6 +27,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.layoutSair.setOnClickListener(view -> showDialogDelete());
+        binding.imgBack.setOnClickListener(view -> finish());
+        binding.layoutNotify.setOnClickListener(view -> newActivty(NotificationsActivity.class));
+        binding.layoutEditDados.setOnClickListener(view -> newActivty(ProfileEditActivity.class));
     }
 
     private void showDialogDelete(){

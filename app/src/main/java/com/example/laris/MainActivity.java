@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.laris.Notify.NotificationsActivity;
+import com.example.laris.Profile.ProfileActivity;
 import com.example.laris.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         binding.btnService.setOnClickListener(view -> newActivty(FilterHome.class));
-
+        binding.btnNotify.setOnClickListener(view -> newActivty(NotificationsActivity.class));
         binding.verMais.setOnClickListener(view -> newActivty(ListActivity.class));
+        binding.imgUser.setOnClickListener(view -> newActivty(ProfileActivity.class));
    }
 
     private void newActivty(Class c ){

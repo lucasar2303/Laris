@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Laris"
         tools:targetApi="31">
         <activity
+            android:name=".Notify.NotificationsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Profile.ProfileEditSenhaActivity"
             android:exported="false">
             <meta-data
@@ -57,7 +64,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Profile.ProfileEditActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -102,7 +109,7 @@
             android:name=".Register.SignupConfirmActivity"
             android:exported="false" />
         <activity
-            android:name=".Profile.ProfileEditActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
