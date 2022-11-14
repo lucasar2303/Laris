@@ -71,15 +71,15 @@
         android:id="@+id/btnEnviar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/roxo"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/btn_form"
         android:text="Alterar"
+        app:backgroundTint="@color/roxo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
