@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.laris.Address.AddressActivity;
 import com.example.laris.Login.LoginActivity;
 import com.example.laris.MainActivity;
 import com.example.laris.Notify.NotificationsActivity;
@@ -32,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding.layoutNotify.setOnClickListener(view -> newActivty(NotificationsActivity.class));
         binding.layoutEditDados.setOnClickListener(view -> newActivty(ProfileEditActivity.class));
         binding.layoutTermos.setOnClickListener(view -> newActivty(TermsPolicyActivity.class));
+        binding.layoutEndereco.setOnClickListener(view -> newActivty(AddressActivity.class));
     }
 
     private void showDialogDelete(){

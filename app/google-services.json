@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "416192267468",
+    "firebase_url": "https://laris-e72dd-default-rtdb.firebaseio.com",
+    "project_id": "laris-e72dd",
+    "storage_bucket": "laris-e72dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416192267468:android:4cfc5c9e070214c85eee69",
+        "android_client_info": {
+          "package_name": "com.example.laris"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416192267468-b59fhdq6pff4qri3eahij0qjbbn866lj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.laris",
+            "certificate_hash": "c42376e56ddf5f23a581dce5c54b9daae4cb0d18"
+          }
+        },
+        {
+          "client_id": "416192267468-eo2sbk6alcl3k01juovthjmma9uq2e5g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcp6GUy7yh9ES7kI6Ztpo6pFN8zqiT5Dw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416192267468-eo2sbk6alcl3k01juovthjmma9uq2e5g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

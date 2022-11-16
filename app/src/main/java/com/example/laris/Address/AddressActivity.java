@@ -29,15 +29,15 @@ public class AddressActivity extends AppCompatActivity {
         binding = ActivityAddressBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+        binding.imgBack.setOnClickListener(view -> finish());
+
         endereco = (Endereco) getIntent().getSerializableExtra("endereco");
         if (endereco != null){
             enderecos.add(endereco);
             enderecos.add(endereco);
             enderecos.add(endereco);
         }
-
-
-
 
         binding.imgDelete1.setOnClickListener(view -> {
             showDialogDelete(0);
