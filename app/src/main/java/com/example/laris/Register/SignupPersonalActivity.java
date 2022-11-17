@@ -69,7 +69,7 @@ public class SignupPersonalActivity extends AppCompatActivity {
         editor.putString("genero", genero);
         editor.commit();
 
-        Intent intent = new Intent(getApplicationContext(), SignupPhotoActivity.class);
+        Intent intent = new Intent(getApplicationContext(), SignupContactActivity.class);
         startActivity(intent);
         finish();
     }

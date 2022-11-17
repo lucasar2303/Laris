@@ -92,27 +92,25 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEsqueceSenha" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/layoutCPF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="20dp"
+        android:elevation="1dp"
+        android:hint="E-mail"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/roxo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        android:hint="CPF"
-        app:boxStrokeColor="@color/roxo"
-        >
+        app:layout_constraintTop_toTopOf="@+id/view">
 
-        <com.santalu.maskara.widget.MaskEditText
-            android:id="@+id/etCpf"
+        <EditText
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            app:mask="___.___.___-__"
-            app:maskCharacter="_"
-            app:maskStyle="completable"
+            android:inputType="textEmailAddress"
             android:padding="15dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +126,7 @@
         app:boxStrokeColor="@color/roxo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutCPF"
+        app:layout_constraintTop_toBottomOf="@+id/layoutEmail"
         app:passwordToggleEnabled="true">
 
         <EditText
