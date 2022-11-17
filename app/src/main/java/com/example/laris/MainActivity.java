@@ -12,6 +12,7 @@ import com.example.laris.Notify.NotificationsActivity;
 import com.example.laris.Profile.ProfileActivity;
 import com.example.laris.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -62,17 +63,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        FirebaseUser usuarioAtual = FirebaseAuth.getInstance().getCurrentUser();
 
-        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DocumentReference documentReference = db.collection("Usuarios").document(userId);
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                if (value != null){
-                    binding.nameUser.setText("Olá, "+value.getString("nome"));
+        if (usuarioAtual != null){
+            userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+            DocumentReference documentReference = db.collection("Usuarios").document(userId);
+            documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    if (value != null){
+                        binding.nameUser.setText("Olá, "+value.getString("nome"));
+                    }
                 }
-            }
-        });
+            });
+        }else{finish();}
+
 
     }
 

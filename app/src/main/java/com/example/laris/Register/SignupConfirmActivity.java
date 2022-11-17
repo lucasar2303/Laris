@@ -255,8 +255,6 @@ public class SignupConfirmActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     salvarDadosUsuario();
                     Toast.makeText(SignupConfirmActivity.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
                     finish();
                 }else{
                     String erro;

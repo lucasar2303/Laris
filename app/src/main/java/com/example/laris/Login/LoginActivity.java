@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RecoveryPasswordActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -54,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SignupPersonalActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
     }

@@ -57,6 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
         view.findViewById(R.id.btnSim).setOnClickListener(view12 -> {
             FirebaseAuth.getInstance().signOut();
             newActivty(LoginActivity.class);
+            finish();
             alertDialog.dismiss();
         });
 
@@ -70,6 +71,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void newActivty(Class c ){
         Intent intent = new Intent(getApplicationContext(), c);
         startActivity(intent);
+
     }
 
     @Override
@@ -77,18 +79,22 @@ public class ProfileActivity extends AppCompatActivity {
         super.onStart();
 
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DocumentReference documentReference = db.collection("Usuarios").document(userId);
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                if (value != null){
-                    binding.tvNome.setText(value.getString("nome")+" "+value.getString("sobrenome"));
-                    Float avaliacao = Float.valueOf(value.getString("avaliacao"));
-                    DecimalFormat df = new DecimalFormat("0.00");
-                    binding.tvAvaliacao.setText(df.format(avaliacao));
+
+        if (userId != null){
+            DocumentReference documentReference = db.collection("Usuarios").document(userId);
+            documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    if (value != null){
+                        binding.tvNome.setText(value.getString("nome")+" "+value.getString("sobrenome"));
+                        Float avaliacao = Float.valueOf(value.getString("avaliacao"));
+                        DecimalFormat df = new DecimalFormat("0.00");
+                        binding.tvAvaliacao.setText(df.format(avaliacao));
+                    }
                 }
-            }
-        });
+            });
+
+        }
 
     }
 }
