@@ -28,7 +28,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         binding = ActivityProfileEditBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
 
 
         binding.imgBack.setOnClickListener(view -> finish());
@@ -36,7 +36,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         binding.layoutApelido.setOnClickListener(view -> newActivty(ProfileEditApelidoActivity.class));
         binding.layoutEmail.setOnClickListener(view -> newActivty(ProfileEditEmailActivity.class));
         binding.layoutCelular.setOnClickListener(view -> newActivty(ProfileEditCelularActivity.class));
-        binding.layoutSenha.setOnClickListener(view -> newActivty(ProfileEditSenhaActivity.class));
+//        binding.layoutSenha.setOnClickListener(view -> newActivty(ProfileEditSenhaActivity.class));
 
     }
 
@@ -58,7 +58,7 @@ public class ProfileEditActivity extends AppCompatActivity {
                     binding.tvNome.setText(value.getString("nome")+" "+value.getString("sobrenome"));
                     binding.tvApelido.setText(value.getString("apelido"));
                     binding.tvCelular.setText(value.getString("celular"));
-                    binding.tvEmail.setText(email);
+                    binding.tvEmail.setText(value.getString("email"));
                 }
             }
         });

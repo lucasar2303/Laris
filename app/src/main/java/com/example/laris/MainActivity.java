@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         DocumentReference documentReference = db.collection("Usuarios").document(userId);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {

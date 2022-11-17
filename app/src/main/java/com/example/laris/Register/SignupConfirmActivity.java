@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.example.laris.Login.LoginActivity;
 import com.example.laris.MainActivity;
+import com.example.laris.Model.Endereco;
 import com.example.laris.R;
 import com.example.laris.databinding.ActivitySignupConfirmBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -295,6 +296,7 @@ public class SignupConfirmActivity extends AppCompatActivity {
         usuario.put("celular", celular);
         usuario.put("cpf", cpf);
         usuario.put("avaliacao" , "5");
+        usuario.put("email" , email);
 
         DocumentReference documentReference = db.collection("Usuarios").document(userId);
         documentReference.set(usuario).addOnSuccessListener(new OnSuccessListener<Void>() {
