@@ -1,5 +1,6 @@
 package com.example.laris.Address;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,19 +11,27 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.laris.Login.LoginActivity;
 import com.example.laris.Model.Endereco;
-import com.example.laris.Profile.ProfileActivity;
 import com.example.laris.R;
 import com.example.laris.databinding.ActivityAddressBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class AddressActivity extends AppCompatActivity {
 
     private ActivityAddressBinding binding;
     private Endereco endereco;
-    private  ArrayList<Endereco> enderecos = new ArrayList<>();
+    private String  userId;
+    public int enderecoSup;
+    private List<DocumentSnapshot> enderecos;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +41,12 @@ public class AddressActivity extends AppCompatActivity {
 
         binding.imgBack.setOnClickListener(view -> finish());
 
-        endereco = (Endereco) getIntent().getSerializableExtra("endereco");
-        if (endereco != null){
-            enderecos.add(endereco);
-            enderecos.add(endereco);
-            enderecos.add(endereco);
-        }
+//        endereco = (Endereco) getIntent().getSerializableExtra("endereco");
+//        if (endereco != null){
+//            enderecos.add(endereco);
+//            enderecos.add(endereco);
+//            enderecos.add(endereco);
+//        }
 
         binding.imgDelete1.setOnClickListener(view -> {
             showDialogDelete(0);
@@ -57,7 +66,7 @@ public class AddressActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        componentes();
+
 
 
     }
@@ -94,42 +103,76 @@ public class AddressActivity extends AppCompatActivity {
     }
 
     private void componentes(){
-        if (enderecos.size()>0 ){
+
+        if (enderecoSup>0 ){
 
             binding.layoutEnd1.setVisibility(View.VISIBLE);
-            binding.tvNome1.setText(enderecos.get(0).getNomeLocal());
-            binding.tvEndereco1.setText(enderecos.get(0).getRua()+", "+enderecos.get(0).getNumero());
+            binding.tvNome1.setText(enderecos.get(0).getString("nomeLocal"));
+
+            binding.tvEndereco1.setText(enderecos.get(0).getString("rua") + ", " + enderecos.get(0).getString("numero"));
             binding.imgEdit1.setOnClickListener(view -> {
                 Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                intent.putExtra("endereco", enderecos.get(0));
+                intent.putExtra("endereco", "0");
                 startActivity(intent);
             });
 
 
         }
 
+        if (enderecoSup>1 ){
 
-        if (enderecos.size()>1){
             binding.layoutEnd2.setVisibility(View.VISIBLE);
-            binding.tvNome2.setText(enderecos.get(1).getNomeLocal());
-            binding.tvEndereco2.setText(enderecos.get(1).getRua()+", "+enderecos.get(1).getNumero());
+            binding.tvNome2.setText(enderecos.get(1).getString("nomeLocal"));
+
+            binding.tvEndereco2.setText(enderecos.get(1).getString("rua") + ", " + enderecos.get(1).getString("numero"));
             binding.imgEdit2.setOnClickListener(view -> {
                 Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                intent.putExtra("endereco", enderecos.get(1));
+                intent.putExtra("endereco", "1");
                 startActivity(intent);
             });
+
+
         }
 
+        if (enderecoSup>2 ){
 
-        if (enderecos.size()>2 ){
             binding.layoutEnd3.setVisibility(View.VISIBLE);
-            binding.tvNome3.setText(enderecos.get(2).getNomeLocal());
-            binding.tvEndereco3.setText(enderecos.get(2).getRua()+", "+enderecos.get(2).getNumero());
+            binding.tvNome3.setText(enderecos.get(2).getString("nomeLocal"));
+
+            binding.tvEndereco3.setText(enderecos.get(2).getString("rua") + ", " + enderecos.get(2).getString("numero"));
             binding.imgEdit3.setOnClickListener(view -> {
                 Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                intent.putExtra("endereco", enderecos.get(2));
+                intent.putExtra("endereco", "2");
                 startActivity(intent);
             });
+
+
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        CollectionReference collectionReference = db.collection("Usuarios").document(userId).collection("enderecos");
+        collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+//                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
+                enderecoSup = value.getDocuments().size();
+                enderecos = value.getDocuments();
+
+                componentes();
+
+                if (enderecoSup>=3){
+                    binding.tvAdd.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+
+
+}
 }
