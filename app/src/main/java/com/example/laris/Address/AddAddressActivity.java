@@ -29,6 +29,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +69,7 @@ public class AddAddressActivity extends AppCompatActivity {
         enderecoEdit = getIntent().getStringExtra("endereco");
 
         if (enderecoEdit!=null){
-            Toast.makeText(this, enderecoEdit, Toast.LENGTH_SHORT).show();
+
             editEndereco();
 
         }
@@ -202,14 +203,8 @@ public class AddAddressActivity extends AppCompatActivity {
 
             userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-            if (enderecoSup3==null) {
-                indexEndereco = 3;
-            }else if (enderecoSup2==null){
-                indexEndereco = 2;
-            }else if (enderecoSup1==null){
-                indexEndereco = 1;
-            }
-            DocumentReference documentReference = db.collection("Usuarios").document(userId).collection("enderecos").document(""+indexEndereco);
+            DocumentReference documentReference = db.collection("Usuarios").document(userId).collection("enderecos").document(""+enderecoSup1);
+            documentReference.delete();
             documentReference.set(endereco).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
@@ -223,6 +218,8 @@ public class AddAddressActivity extends AppCompatActivity {
                         }
                     });
 
+            Intent intent = new Intent(getApplicationContext(), AddressActivity.class);
+            startActivity(intent);
             finish();
         }else{
             Toast.makeText(this, "Atingiu o limite de 3 endereços", Toast.LENGTH_SHORT).show();
@@ -242,14 +239,27 @@ public class AddAddressActivity extends AppCompatActivity {
 //                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
                 enderecoSup = value.getDocuments().size();
                 enderecosDocuments = value.getDocuments();
-                enderecoSup1 = "0";
-                String[] dados = new String[2];
+
+                String[] dados = new String[enderecoSup];
+
                 for (int i=0; i<enderecoSup; i++){
                     dados[i] = enderecosDocuments.get(i).getId();
                 }
-                if (dados[2]==null){
-                    Toast.makeText(AddAddressActivity.this, "Fon", Toast.LENGTH_SHORT).show();
-                }
+                List<String> listDados = Arrays.asList(dados);
+
+                    if (!listDados.contains("3")){
+                            enderecoSup1="3";
+                     }
+                    if (!listDados.contains("2")){
+                            enderecoSup1="2";
+                     }
+                    if (!listDados.contains("1")){
+                            enderecoSup1="1";
+                     }
+
+
+
+
 
 
 
@@ -328,7 +338,10 @@ public class AddAddressActivity extends AppCompatActivity {
                         }
                     });
 
-            finish();
+
+        Intent intent = new Intent(getApplicationContext(), AddressActivity.class);
+        startActivity(intent);
+        finish();
 
     }
 

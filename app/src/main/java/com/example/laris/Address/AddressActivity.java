@@ -16,6 +16,7 @@ import com.example.laris.R;
 import com.example.laris.databinding.ActivityAddressBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -78,18 +79,35 @@ public class AddressActivity extends AppCompatActivity {
 
         final AlertDialog alertDialog = builder.create();
 
+
+
         view.findViewById(R.id.btnSim).setOnClickListener(view12 -> {
             if (index==0){
-                enderecos.remove(0);
-                binding.layoutEnd1.setVisibility(View.GONE);
+                DocumentReference documentReference = db.collection("Usuarios").document(userId).collection("enderecos").document("1");
+                documentReference.delete();
+                if (enderecoSup==3){
+                    binding.layoutEnd3.setVisibility(View.GONE);
+                }else if (enderecoSup==2){
+                    binding.layoutEnd2.setVisibility(View.GONE);
+                }
             }
             if (index==1){
-                enderecos.remove(1);
-                binding.layoutEnd2.setVisibility(View.GONE);
+                DocumentReference documentReference = db.collection("Usuarios").document(userId).collection("enderecos").document("2");
+                documentReference.delete();
+                if (enderecoSup==3){
+                    binding.layoutEnd3.setVisibility(View.GONE);
+                }else if (enderecoSup==2){
+                    binding.layoutEnd2.setVisibility(View.GONE);
+                }
             }
             if (index==2){
-                enderecos.remove(2);
-                binding.layoutEnd3.setVisibility(View.GONE);
+                DocumentReference documentReference = db.collection("Usuarios").document(userId).collection("enderecos").document("3");
+                documentReference.delete();
+                if (enderecoSup==3){
+                    binding.layoutEnd3.setVisibility(View.GONE);
+                }else if (enderecoSup==2){
+                    binding.layoutEnd2.setVisibility(View.GONE);
+                }
             }
 
             alertDialog.dismiss();
@@ -102,57 +120,11 @@ public class AddressActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private void componentes(){
-
-        if (enderecoSup>0 ){
-
-            binding.layoutEnd1.setVisibility(View.VISIBLE);
-            binding.tvNome1.setText(enderecos.get(0).getString("nomeLocal"));
-
-            binding.tvEndereco1.setText(enderecos.get(0).getString("rua") + ", " + enderecos.get(0).getString("numero"));
-            binding.imgEdit1.setOnClickListener(view -> {
-                Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                intent.putExtra("endereco", "0");
-                startActivity(intent);
-            });
-
-
-        }
-
-        if (enderecoSup>1 ){
-
-            binding.layoutEnd2.setVisibility(View.VISIBLE);
-            binding.tvNome2.setText(enderecos.get(1).getString("nomeLocal"));
-
-            binding.tvEndereco2.setText(enderecos.get(1).getString("rua") + ", " + enderecos.get(1).getString("numero"));
-            binding.imgEdit2.setOnClickListener(view -> {
-                Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                intent.putExtra("endereco", "1");
-                startActivity(intent);
-            });
-
-
-        }
-
-        if (enderecoSup>2 ){
-
-            binding.layoutEnd3.setVisibility(View.VISIBLE);
-            binding.tvNome3.setText(enderecos.get(2).getString("nomeLocal"));
-
-            binding.tvEndereco3.setText(enderecos.get(2).getString("rua") + ", " + enderecos.get(2).getString("numero"));
-            binding.imgEdit3.setOnClickListener(view -> {
-                Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                intent.putExtra("endereco", "2");
-                startActivity(intent);
-            });
-
-
-        }
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
+
+
 
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         CollectionReference collectionReference = db.collection("Usuarios").document(userId).collection("enderecos");
@@ -163,10 +135,55 @@ public class AddressActivity extends AppCompatActivity {
                 enderecoSup = value.getDocuments().size();
                 enderecos = value.getDocuments();
 
-                componentes();
+                if (enderecoSup>0 ){
+
+                    binding.layoutEnd1.setVisibility(View.VISIBLE);
+                    binding.tvNome1.setText(enderecos.get(0).getString("nomeLocal"));
+
+                    binding.tvEndereco1.setText(enderecos.get(0).getString("rua") + ", " + enderecos.get(0).getString("numero"));
+                    binding.imgEdit1.setOnClickListener(view -> {
+                        Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
+                        intent.putExtra("endereco", "0");
+                        startActivity(intent);
+                    });
+
+
+                }
+
+                if (enderecoSup>1 ){
+
+                    binding.layoutEnd2.setVisibility(View.VISIBLE);
+                    binding.tvNome2.setText(enderecos.get(1).getString("nomeLocal"));
+
+                    binding.tvEndereco2.setText(enderecos.get(1).getString("rua") + ", " + enderecos.get(1).getString("numero"));
+                    binding.imgEdit2.setOnClickListener(view -> {
+                        Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
+                        intent.putExtra("endereco", "1");
+                        startActivity(intent);
+                    });
+
+
+                }
+
+                if (enderecoSup>2 ){
+
+                    binding.layoutEnd3.setVisibility(View.VISIBLE);
+                    binding.tvNome3.setText(enderecos.get(2).getString("nomeLocal"));
+
+                    binding.tvEndereco3.setText(enderecos.get(2).getString("rua") + ", " + enderecos.get(2).getString("numero"));
+                    binding.imgEdit3.setOnClickListener(view -> {
+                        Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
+                        intent.putExtra("endereco", "2");
+                        startActivity(intent);
+                    });
+
+
+                }
 
                 if (enderecoSup>=3){
                     binding.tvAdd.setVisibility(View.GONE);
+                }else{
+                    binding.tvAdd.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -174,5 +191,8 @@ public class AddressActivity extends AppCompatActivity {
 
 
 
-}
+
+
+
+    }
 }

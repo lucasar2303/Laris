@@ -58,8 +58,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void verificaDados(){
-        if (supLogin==false){
-            supLogin=true;
+
             String email = binding.etEmail.getText().toString();
             String senha = binding.etSenha.getText().toString();
 
@@ -73,22 +72,25 @@ public class LoginActivity extends AppCompatActivity {
             }else{
                 autenticarUser();
             }
-        }
+
 
     }
 
     private void autenticarUser(){
         String email = binding.etEmail.getText().toString();
         String senha = binding.etSenha.getText().toString();
+        binding.btnEntrar.setEnabled(false);
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
                 }else{
+                    binding.btnEntrar.setEnabled(true);
                     String erro;
                     try {
                         throw task.getException();
