@@ -70,6 +70,7 @@ public class AddAddressActivity extends AppCompatActivity {
 
         if (enderecoEdit!=null){
 
+            Toast.makeText(this, enderecoEdit, Toast.LENGTH_SHORT).show();
             editEndereco();
 
         }
@@ -277,9 +278,10 @@ public class AddAddressActivity extends AppCompatActivity {
 
 
     private void editEndereco(){
-        int index = Integer.parseInt(enderecoEdit)+1;
+        int index = Integer.parseInt(enderecoEdit);
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DocumentReference documentReference = db.collection("Usuarios").document(userId).collection("enderecos").document(""+index);
+        Toast.makeText(this, enderecoEdit, Toast.LENGTH_SHORT).show();
+        DocumentReference documentReference = db.collection("Usuarios").document(userId).collection("enderecos").document(""+enderecoEdit);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {

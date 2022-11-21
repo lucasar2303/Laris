@@ -134,6 +134,7 @@ public class AddressActivity extends AppCompatActivity {
 //                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
                 enderecoSup = value.getDocuments().size();
                 enderecos = value.getDocuments();
+                Toast.makeText(AddressActivity.this, value.getDocuments().get(0).getId(), Toast.LENGTH_SHORT).show();
 
                 if (enderecoSup>0 ){
 
@@ -143,7 +144,7 @@ public class AddressActivity extends AppCompatActivity {
                     binding.tvEndereco1.setText(enderecos.get(0).getString("rua") + ", " + enderecos.get(0).getString("numero"));
                     binding.imgEdit1.setOnClickListener(view -> {
                         Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                        intent.putExtra("endereco", "0");
+                        intent.putExtra("endereco", value.getDocuments().get(0).getId());
                         startActivity(intent);
                     });
 
@@ -158,7 +159,7 @@ public class AddressActivity extends AppCompatActivity {
                     binding.tvEndereco2.setText(enderecos.get(1).getString("rua") + ", " + enderecos.get(1).getString("numero"));
                     binding.imgEdit2.setOnClickListener(view -> {
                         Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                        intent.putExtra("endereco", "1");
+                        intent.putExtra("endereco", value.getDocuments().get(1).getId());
                         startActivity(intent);
                     });
 
@@ -173,7 +174,7 @@ public class AddressActivity extends AppCompatActivity {
                     binding.tvEndereco3.setText(enderecos.get(2).getString("rua") + ", " + enderecos.get(2).getString("numero"));
                     binding.imgEdit3.setOnClickListener(view -> {
                         Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                        intent.putExtra("endereco", "2");
+                        intent.putExtra("endereco", value.getDocuments().get(2).getId());
                         startActivity(intent);
                     });
 
