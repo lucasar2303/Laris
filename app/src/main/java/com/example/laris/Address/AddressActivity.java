@@ -134,7 +134,6 @@ public class AddressActivity extends AppCompatActivity {
 //                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
                 enderecoSup = value.getDocuments().size();
                 enderecos = value.getDocuments();
-                Toast.makeText(AddressActivity.this, value.getDocuments().get(0).getId(), Toast.LENGTH_SHORT).show();
 
                 if (enderecoSup>0 ){
 

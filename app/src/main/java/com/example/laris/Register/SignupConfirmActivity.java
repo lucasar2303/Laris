@@ -43,12 +43,16 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class SignupConfirmActivity extends AppCompatActivity {
 
@@ -56,6 +60,7 @@ public class SignupConfirmActivity extends AppCompatActivity {
     private String img, nome, sobrenome, data, genero,  email, celular, cpf, senha, userId;
     private Bitmap bitmap;
     private Uri imgUri;
+    public String imgUrlSup;
     Boolean celularSup = true, cpfSup = true;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -253,9 +258,9 @@ public class SignupConfirmActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    salvarDadosUsuario();
+                    salvarImagem();
                     Toast.makeText(SignupConfirmActivity.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
-                    finish();
+//                    finish();
                 }else{
                     String erro;
                     try {
@@ -277,14 +282,38 @@ public class SignupConfirmActivity extends AppCompatActivity {
 
 
 
+
     }
 
-    private void salvarDadosUsuario(){
+    private void salvarImagem(){
 
+        //salvar imagem
+        String filename = UUID.randomUUID().toString();
+        final StorageReference reference = FirebaseStorage.getInstance().getReference("/images/"+filename);
+        reference.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        imgUrlSup = uri.toString();
+                        salvarDadosUsuario(imgUrlSup);
+                    }
+                });
+            }
+        });
+    }
+
+    private void salvarDadosUsuario(String urlImg){
+
+
+
+        //criar usuario
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         Map<String, Object> usuario = new HashMap<>();
+
 
         usuario.put("nome", nome);
         usuario.put("apelido", nome);
@@ -295,6 +324,8 @@ public class SignupConfirmActivity extends AppCompatActivity {
         usuario.put("cpf", cpf);
         usuario.put("avaliacao" , "5");
         usuario.put("email" , email);
+        usuario.put("urlImagem" , urlImg);
+
 
         DocumentReference documentReference = db.collection("Usuarios").document(userId);
         documentReference.set(usuario).addOnSuccessListener(new OnSuccessListener<Void>() {

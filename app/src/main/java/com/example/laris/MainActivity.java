@@ -18,6 +18,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -74,6 +75,14 @@ public class MainActivity extends AppCompatActivity {
                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                     if (value != null){
                         binding.nameUser.setText("Olá, "+value.getString("nome"));
+                        if (value.getString("urlImagem").equals("") ||value.getString("urlImagem") == null){
+                            return;
+                        }else{
+                            Picasso.get().load(value.getString("urlImagem"))
+                                    .error(R.drawable.icon_profile)
+                                    .placeholder(R.drawable.icon_contact)
+                                    .into(binding.imgUser);
+                        }
                     }
                 }
             });
