@@ -377,6 +377,7 @@
 
 
             <RadioButton
+                android:visibility="gone"
                 android:id="@+id/btnEndereco1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -385,6 +386,7 @@
                 android:onClick="checkEndereco"/>
 
             <RadioButton
+                android:visibility="gone"
                 android:id="@+id/btnEndereco2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -393,6 +395,7 @@
                 android:onClick="checkEndereco"/>
 
             <RadioButton
+                android:visibility="gone"
                 android:id="@+id/btnEndereco3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

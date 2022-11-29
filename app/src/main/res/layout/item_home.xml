@@ -57,7 +57,7 @@
         app:srcCompat="@drawable/icon_star" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tvAvaliacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -111,6 +111,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tvKm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

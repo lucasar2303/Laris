@@ -1,5 +1,6 @@
 package com.example.laris;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,12 +18,21 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.laris.Address.AddAddressActivity;
 import com.example.laris.databinding.ActivityFilterHomeBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class FilterHome extends AppCompatActivity {
@@ -31,8 +41,13 @@ public class FilterHome extends AppCompatActivity {
     private RadioButton btnServico, btnMontagem, btnContrato, btnEndereco;
     private String servicoSelect, montagemSelect, contratoSelect, enderecoSelect, kmSelect, auxDate;
     private String dateVisita, dateEntrada, dateSaida;
+    private String end1Rua, end2Rua, end3Rua, end1Num, end2Num, end3Num;
     private int hourVisit, minuteVisit;
     private DatePickerDialog datePickerDialog;
+    private String  userId;
+    public int enderecoSup;
+    public List<DocumentSnapshot> enderecos;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,6 +212,7 @@ public class FilterHome extends AppCompatActivity {
         enderecoSelect = btnEndereco.getText().toString();
 
 
+
     }
 
     public void checkContrato(View v){
@@ -275,7 +291,18 @@ public class FilterHome extends AppCompatActivity {
             intent.putExtra("dataSaida", dateSaida);
         }
 
-        intent.putExtra("endereco", enderecoSelect);
+        if (enderecoSelect.equals(enderecos.get(0).getString("nomeLocal"))){
+            intent.putExtra("rua", end1Rua);
+            intent.putExtra("num", end1Num);
+        }else if (enderecoSelect.equals(enderecos.get(1).getString("nomeLocal"))){
+            intent.putExtra("rua", end2Rua);
+            intent.putExtra("num", end2Num);
+        }else if (enderecoSelect.equals(enderecos.get(2).getString("nomeLocal"))){
+            intent.putExtra("rua", end3Rua);
+            intent.putExtra("num", end3Num);
+        }else
+
+            intent.putExtra("endereco", enderecoSelect);
         intent.putExtra("km", kmSelect);
 
         startActivity(intent);
@@ -319,6 +346,57 @@ public class FilterHome extends AppCompatActivity {
 //        alertDialog.show();
 //    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        CollectionReference collectionReference = db.collection("Usuarios").document(userId).collection("enderecos");
+        collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+//                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
+                enderecoSup = value.getDocuments().size();
+                enderecos = value.getDocuments();
+
+
+                if (enderecoSup>0 ){
+
+                    binding.btnEndereco1.setVisibility(View.VISIBLE);
+                    binding.btnEndereco1.setText(enderecos.get(0).getString("nomeLocal"));
+                    end1Rua = enderecos.get(0).getString("rua");
+                    end1Num = enderecos.get(0).getString("numero");
+
+                }
+
+                if (enderecoSup>1 ){
+
+                    binding.btnEndereco2.setVisibility(View.VISIBLE);
+                    binding.btnEndereco2.setText(enderecos.get(1).getString("nomeLocal"));
+                    end2Rua = enderecos.get(1).getString("rua");
+                    end2Num = enderecos.get(1).getString("numero");
+                }
+
+                if (enderecoSup>2 ){
+
+                    binding.btnEndereco3.setVisibility(View.VISIBLE);
+                    binding.btnEndereco3.setText(enderecos.get(2).getString("nomeLocal"));
+                    end3Rua = enderecos.get(2).getString("rua");
+                    end3Num = enderecos.get(2).getString("numero");
+
+                }
+
+            }
+        });
+
+
+
+
+
+
+    }
 
 
 

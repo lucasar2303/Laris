@@ -30,6 +30,9 @@ Aenean consectetur, elit hendrerit vulputate venenatis, enim purus condimentum f
 Sed commodo nibh lectus, sed mollis sem hendrerit at. Phasellus nec scelerisque tortor. Nam nec ante neque. Nulla congue auctor nibh, ac tempus odio porta quis. Etiam quis mi id nisi hendrerit pretium. Nam fringilla nisl et libero dictum, id porta nibh rhoncus. Nullam nec egestas elit, sed vestibulum metus. Praesent sagittis sed elit ut laoreet. Mauris vel sagittis lectus, efficitur efficitur purus. Proin ac luctus nibh, vel ornare nisi. Praesent varius urna in enim porttitor ullamcorper. Sed sodales tincidunt metus at sollicitudin. Nam cursus vitae nulla pretium porttitor. Ut interdum lacus sed imperdiet interdum.\n\n
 
 Donec aliquet rutrum accumsan. Sed purus ligula, vulputate ut sollicitudin sed, eleifend non metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mollis risus nec purus faucibus, et elementum odio tincidunt. Ut sed dignissim est. Sed consequat, felis vel suscipit luctus, urna lacus posuere libero, at facilisis dolor risus ut ligula. Sed eget justo eu nisl rhoncus placerat in eget nulla. Nunc mollis lorem est. Vivamus enim massa, efficitur et nisl a, vulputate tempus purus. Nunc faucibus at est in tempus.</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
