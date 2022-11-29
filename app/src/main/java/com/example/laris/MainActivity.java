@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.laris.Adapter.ColabAdapter;
+import com.example.laris.Address.AddAddressActivity;
 import com.example.laris.Model.Colaborador;
 import com.example.laris.Model.Endereco;
 import com.example.laris.Notify.NotificationsActivity;
@@ -25,11 +27,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import org.checkerframework.checker.units.qual.C;
@@ -44,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
     String servico, montagem, contrato, dataVisita, dataEntrada, dataSaida, endereco, km, rua, num, userId;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private ColabAdapter colabAdapter;
-    private List<Colaborador> listColab = new ArrayList<>();
+    public List<Colaborador> listColab = new ArrayList<>();
+
+    public int colabsSup;
+    public List<DocumentSnapshot> colabs;
 
 
     @Override
@@ -57,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = new MapFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.frameMap, fragment).commit();
 
+        CollectionReference collectionReference = db.collection("Colaboradores");
 
         Bundle extrasFilter = getIntent().getExtras();
         if (extrasFilter != null){
@@ -88,8 +96,67 @@ public class MainActivity extends AppCompatActivity {
             data.putString("endereco",endereco);
             fragment.setArguments(data);
 
-            carregarLista();
 
+
+
+            collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+//                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
+                    colabsSup = value.getDocuments().size();
+                    colabs = value.getDocuments();
+
+                    for (int i = 0; i <colabsSup; i++){
+                        if (!servico.equals(colabs.get(i).getString("profissao"))){
+
+                        }else
+                        if (!contrato.equals(colabs.get(i).getString("contrato"))){
+
+                        }else {
+                            Colaborador colaborador1 = new Colaborador();
+                            colaborador1.setNome(colabs.get(i).getString("nome"));
+                            colaborador1.setContrato(colabs.get(i).getString("contrato"));
+                            colaborador1.setValor(colabs.get(i).getDouble("valor"));
+                            colaborador1.setProfissao(colabs.get(i).getString("profissao"));
+
+                            listColab.add(colaborador1);
+                        }
+
+                    }
+
+                    if (listColab.size()==0){
+                        Toast.makeText(MainActivity.this, "Nenhum colaborador disponível", Toast.LENGTH_SHORT).show();
+                    }else{
+                        carregarLista(listColab, "2");
+                    }
+
+
+                }
+            });
+
+        }else{
+
+            collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+//                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
+                    colabsSup = value.getDocuments().size();
+                    colabs = value.getDocuments();
+
+                    for (int i = 0; i <colabsSup; i++){
+
+                        Colaborador colaborador1 = new Colaborador();
+                        colaborador1.setNome(colabs.get(i).getString("nome"));
+                        colaborador1.setContrato(colabs.get(i).getString("contrato"));
+                        colaborador1.setValor(colabs.get(i).getDouble("valor"));
+                        colaborador1.setProfissao(colabs.get(i).getString("profissao"));
+
+                        listColab.add(colaborador1);
+                    }
+                    carregarLista(listColab, "1");
+
+                }
+            });
         }
 
         binding.btnService.setOnClickListener(view -> newActivty(FilterHome.class));
@@ -126,8 +193,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }else{finish();}
 
-
-
     }
 
     private void newActivty(Class c ){
@@ -135,44 +200,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void carregarLista(){
+    public void carregarLista(List<Colaborador> listColaba, String activity){
 
-        Endereco endereco1 = new Endereco();
-        endereco1.setCep("12061040");
-        endereco1.setRua("Rua Paraná");
-        endereco1.setBairro("Parque São Jorge");
-        endereco1.setCidade("Taubaté");
-        endereco1.setUf("SP");
-        endereco1.setNumero("28");
+        if (!activity.equals("1")){
+            colabAdapter = new ColabAdapter(listColab, "2");
+        }else{
+            colabAdapter = new ColabAdapter(listColab, "1");
+        }
 
-        Endereco endereco2 = new Endereco();
-        endereco2.setCep("12070200");
-        endereco2.setRua("Rua José Milliet Filho");
-        endereco2.setBairro("Jardim Ana Emilia");
-        endereco2.setCidade("Taubaté");
-        endereco2.setUf("SP");
-        endereco2.setNumero("135");
-
-        Colaborador colaborador1 = new Colaborador();
-        colaborador1.setNome("João");
-        colaborador1.setContrato("Diária");
-        colaborador1.setValor(55.0);
-        colaborador1.setProfissao("Pintor");
-        colaborador1.setAvaliacao(5.0);
-        colaborador1.setEndereco(endereco1);
-
-        Colaborador colaborador2 = new Colaborador();
-        colaborador2.setNome("Daniel");
-        colaborador2.setContrato("A negociar");
-        colaborador2.setValor(0.0);
-        colaborador2.setProfissao("Montador");
-        colaborador2.setAvaliacao(4.7);
-        colaborador2.setEndereco(endereco1);
-
-        listColab.add(colaborador1);
-        listColab.add(colaborador2);
-
-        colabAdapter = new ColabAdapter(listColab, "1");
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         binding.recyclerColab.setLayoutManager(layoutManager);

@@ -49,7 +49,7 @@ public class ColabAdapter extends RecyclerView.Adapter<ColabAdapter.MyViewHolder
             holder.contrato.setText("Diária: R$ " + colaborador.getValor());
         }
 
-        holder.avaliacao.setText(colaborador.getAvaliacao().toString());
+//        holder.avaliacao.setText(colaborador.getAvaliacao().toString());
 
     }
 
