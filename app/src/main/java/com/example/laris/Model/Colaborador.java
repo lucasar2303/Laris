@@ -5,11 +5,20 @@ import java.io.Serializable;
 public class Colaborador implements Serializable {
 
     private String nome;
+    private String id;
     private String profissao;
     private String contrato;
     private Double valor;
     private Endereco endereco;
     private Double avaliacao;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

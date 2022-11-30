@@ -155,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                         colaborador1.setContrato(colabs.get(i).getString("contrato"));
                         colaborador1.setValor(colabs.get(i).getDouble("valor"));
                         colaborador1.setProfissao(colabs.get(i).getString("profissao"));
+                        colaborador1.setId(colabs.get(i).getId());
 
                         listColab.add(colaborador1);
                     }

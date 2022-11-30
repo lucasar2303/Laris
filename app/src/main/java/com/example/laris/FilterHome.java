@@ -278,12 +278,7 @@ public class FilterHome extends AppCompatActivity {
 
     public void enviaDados(){
 
-        //Shared Preferences de dados do filtro
-        SharedPreferences.Editor editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
-        editor.putString("dataEntrada", dateEntrada);
-        editor.putString("dataSaida", dateSaida);
-        editor.putString("dataVisita", dateVisita);
-        editor.commit();
+
 
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
@@ -317,6 +312,14 @@ public class FilterHome extends AppCompatActivity {
 
             intent.putExtra("endereco", enderecoSelect);
         intent.putExtra("km", kmSelect);
+
+        //Shared Preferences de dados do filtro
+        SharedPreferences.Editor editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
+        editor.putString("dataEntrada", dateEntrada);
+        editor.putString("dataSaida", dateSaida);
+        editor.putString("dataVisita", dateVisita);
+        editor.putString("endereco", end1Rua+ ", "+end1Num);
+        editor.commit();
 
         startActivity(intent);
         finish();
