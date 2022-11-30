@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     if (listColab.size()==0){
                         Toast.makeText(MainActivity.this, "Nenhum colaborador disponível", Toast.LENGTH_SHORT).show();
                     }else{
-                        carregarLista(listColab, "2");
+                        carregarLista(listColab, "1");
                     }
 
 

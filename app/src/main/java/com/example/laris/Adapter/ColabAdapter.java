@@ -68,7 +68,11 @@ public class ColabAdapter extends RecyclerView.Adapter<ColabAdapter.MyViewHolder
     @Override
     public int getItemCount() {
         if (activity.equals("1")){
-            return 2;
+            if (listColab.size()<=2){
+                return listColab.size();
+            }else {
+                return 2;
+            }
         }else{
             return listColab.size();
         }
