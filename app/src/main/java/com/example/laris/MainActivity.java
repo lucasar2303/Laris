@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -68,10 +69,11 @@ public class MainActivity extends AppCompatActivity {
 
         Bundle extrasFilter = getIntent().getExtras();
         if (extrasFilter != null){
+            //Recebendo o filtro
             servico = extrasFilter.getString("servico");
             binding.btnService.setText(servico);
-            if(servico.equals("Consertos") || servico.equals("Montagem / Instalação")){
-                montagem = extrasFilter.getString("montagem");
+            if(servico.equals("Consertos") || servico.equals("Montagem")){
+                montagem = extrasFilter.getString("Montagem");
             }
             contrato = extrasFilter.getString("contrato");
             if (contrato.equals("A negociar")){
@@ -90,11 +92,14 @@ public class MainActivity extends AppCompatActivity {
 
             binding.addressSelected.setText(rua+", "+num);
 
+            //Maps
             Bundle data = new Bundle();
             data.putString("rua",rua);
             data.putString("num",num);
             data.putString("endereco",endereco);
             fragment.setArguments(data);
+
+
 
 
 

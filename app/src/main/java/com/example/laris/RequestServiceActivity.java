@@ -3,11 +3,13 @@ package com.example.laris;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.example.laris.Model.Colaborador;
 import com.example.laris.databinding.ActivityRequestServiceBinding;
 
 import java.text.ParseException;
@@ -43,15 +45,45 @@ public class RequestServiceActivity extends AppCompatActivity {
 
         binding.tvCancelar.setOnClickListener(view -> finish());
 
-        nome = "Lucas";
-        profissao = "Pintor";
-        avaliacao = "4,9";
+        Date dataTeste = new Date();
+        SimpleDateFormat formatData = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dataTeste );
+        cal.add(Calendar.DATE, 1);
+        dataTeste = cal.getTime();
+        String proxData = formatData.format(dataTeste);
 
-        servico = "Pintura";
-        contrato = "Diária";
-        dataEntrada = "10/11/2022";
-        dataSaida = "12/11/2022";
-        valorContrato = 70.77;
+
+
+        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+        dataEntrada = pref.getString("dataEntrada", proxData);
+        dataSaida = pref.getString("dataSaida", proxData);
+        dataVisita = pref.getString("dataVisita", proxData);
+
+
+
+        Colaborador colaborador1 = (Colaborador) getIntent().getSerializableExtra("colab");
+        if (colaborador1!=null){
+            nome = colaborador1.getNome();
+            servico = colaborador1.getProfissao();
+            valorContrato = colaborador1.getValor();
+            contrato = colaborador1.getContrato();
+            avaliacao = "5.0";
+
+            if (servico.equals("Pintura")){
+                profissao = "Pintor";
+            }
+
+            if (servico.equals("Montagem") || servico.equals("Conserto")){
+                profissao = "Montador";
+            }
+
+            if (servico.equals("Limpeza")){
+                profissao = "Faxineiro";
+            }
+
+        }
+
 
 /*
         servico = "Limpeza";

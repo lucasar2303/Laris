@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -185,9 +186,13 @@ public class FilterHome extends AppCompatActivity {
         int radioId = binding.groupServico.getCheckedRadioButtonId();
 
         btnServico = findViewById(radioId);
-        servicoSelect = btnServico.getText().toString();
+        if (btnServico.getText().toString().equals("Montagem / Instalação")){
+            servicoSelect = "Montagem";
+        }else {
+            servicoSelect = btnServico.getText().toString();
+        }
 
-        if (servicoSelect.equals("Consertos") || servicoSelect.equals("Montagem / Instalação")){
+        if (servicoSelect.equals("Consertos") || servicoSelect.equals("Montagem")){
             binding.tvMontagem.setVisibility(View.VISIBLE);
             binding.groupMontagem.setVisibility(View.VISIBLE);
         }else{
@@ -272,6 +277,14 @@ public class FilterHome extends AppCompatActivity {
     }
 
     public void enviaDados(){
+
+        //Shared Preferences de dados do filtro
+        SharedPreferences.Editor editor = getSharedPreferences("pref", MODE_PRIVATE).edit();
+        editor.putString("dataEntrada", dateEntrada);
+        editor.putString("dataSaida", dateSaida);
+        editor.putString("dataVisita", dateVisita);
+        editor.commit();
+
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
         intent.putExtra("servico", servicoSelect);
