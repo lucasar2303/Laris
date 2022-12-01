@@ -65,6 +65,7 @@ public class AddressActivity extends AppCompatActivity {
         binding.tvAdd.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
             startActivity(intent);
+            finish();
         });
 
 
@@ -89,6 +90,8 @@ public class AddressActivity extends AppCompatActivity {
                     binding.layoutEnd3.setVisibility(View.GONE);
                 }else if (enderecoSup==2){
                     binding.layoutEnd2.setVisibility(View.GONE);
+                }else if (enderecoSup==1){
+                    binding.layoutEnd1.setVisibility(View.GONE);
                 }
             }
             if (index==1){
@@ -145,6 +148,7 @@ public class AddressActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
                         intent.putExtra("endereco", value.getDocuments().get(0).getId());
                         startActivity(intent);
+                        finish();
                     });
 
 
@@ -160,6 +164,7 @@ public class AddressActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
                         intent.putExtra("endereco", value.getDocuments().get(1).getId());
                         startActivity(intent);
+                        finish();
                     });
 
 
@@ -175,6 +180,7 @@ public class AddressActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
                         intent.putExtra("endereco", value.getDocuments().get(2).getId());
                         startActivity(intent);
+                        finish();
                     });
 
 

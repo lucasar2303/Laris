@@ -1,6 +1,7 @@
 package com.example.laris.Register;
 
 import static java.lang.System.err;
+import static java.lang.System.in;
 import static java.lang.System.out;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.laris.Login.LoginActivity;
+import com.example.laris.Login.WelcomeActivity;
 import com.example.laris.MainActivity;
 import com.example.laris.Model.Endereco;
 import com.example.laris.R;
@@ -260,6 +262,9 @@ public class SignupConfirmActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     salvarImagem();
                     Toast.makeText(SignupConfirmActivity.this, "Cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
+                    startActivity(intent);
+                    finish();
 //                    finish();
                 }else{
                     String erro;

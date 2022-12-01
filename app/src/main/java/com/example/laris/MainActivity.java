@@ -58,9 +58,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setTheme(R.style.Theme_Laris);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
+
 
         Fragment fragment = new MapFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.frameMap, fragment).commit();
@@ -102,42 +104,50 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+            FirebaseUser usuarioAtual = FirebaseAuth.getInstance().getCurrentUser();
 
+            if (usuarioAtual!=null) {
 
-            collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 //                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
-                    colabsSup = value.getDocuments().size();
-                    colabs = value.getDocuments();
 
-                    for (int i = 0; i <colabsSup; i++){
-                        if (!servico.equals(colabs.get(i).getString("profissao"))){
+                        if (value!=null){
+                            colabsSup = value.getDocuments().size();
+                            colabs = value.getDocuments();
 
-                        }else
-                        if (!contrato.equals(colabs.get(i).getString("contrato"))){
+                            for (int i = 0; i < colabsSup; i++) {
+                                if (!servico.equals(colabs.get(i).getString("profissao"))) {
 
-                        }else {
-                            Colaborador colaborador1 = new Colaborador();
-                            colaborador1.setNome(colabs.get(i).getString("nome"));
-                            colaborador1.setContrato(colabs.get(i).getString("contrato"));
-                            colaborador1.setValor(colabs.get(i).getDouble("valor"));
-                            colaborador1.setProfissao(colabs.get(i).getString("profissao"));
+                                } else if (!contrato.equals(colabs.get(i).getString("contrato"))) {
 
-                            listColab.add(colaborador1);
+                                } else {
+                                    Colaborador colaborador1 = new Colaborador();
+                                    colaborador1.setNome(colabs.get(i).getString("nome"));
+                                    colaborador1.setContrato(colabs.get(i).getString("contrato"));
+                                    colaborador1.setValor(colabs.get(i).getDouble("valor"));
+                                    colaborador1.setProfissao(colabs.get(i).getString("profissao"));
+
+                                    listColab.add(colaborador1);
+                                }
+
+                            }
+
+                            if (listColab.size() == 0) {
+                                Toast.makeText(MainActivity.this, "Nenhum colaborador disponível", Toast.LENGTH_SHORT).show();
+                            } else {
+                                carregarLista(listColab, "1");
+                            }
+
+
                         }
 
+
+
                     }
-
-                    if (listColab.size()==0){
-                        Toast.makeText(MainActivity.this, "Nenhum colaborador disponível", Toast.LENGTH_SHORT).show();
-                    }else{
-                        carregarLista(listColab, "1");
-                    }
-
-
-                }
-            });
+                });
+            }
 
         }else{
 

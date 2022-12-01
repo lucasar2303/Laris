@@ -374,35 +374,39 @@ public class FilterHome extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 //                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
-                enderecoSup = value.getDocuments().size();
-                enderecos = value.getDocuments();
+
+                if (value!=null){
+                    enderecoSup = value.getDocuments().size();
+                    enderecos = value.getDocuments();
 
 
-                if (enderecoSup>0 ){
+                    if (enderecoSup>0 ){
 
-                    binding.btnEndereco1.setVisibility(View.VISIBLE);
-                    binding.btnEndereco1.setText(enderecos.get(0).getString("nomeLocal"));
-                    end1Rua = enderecos.get(0).getString("rua");
-                    end1Num = enderecos.get(0).getString("numero");
+                        binding.btnEndereco1.setVisibility(View.VISIBLE);
+                        binding.btnEndereco1.setText(enderecos.get(0).getString("nomeLocal"));
+                        end1Rua = enderecos.get(0).getString("rua");
+                        end1Num = enderecos.get(0).getString("numero");
 
+                    }
+
+                    if (enderecoSup>1 ){
+
+                        binding.btnEndereco2.setVisibility(View.VISIBLE);
+                        binding.btnEndereco2.setText(enderecos.get(1).getString("nomeLocal"));
+                        end2Rua = enderecos.get(1).getString("rua");
+                        end2Num = enderecos.get(1).getString("numero");
+                    }
+
+                    if (enderecoSup>2 ){
+
+                        binding.btnEndereco3.setVisibility(View.VISIBLE);
+                        binding.btnEndereco3.setText(enderecos.get(2).getString("nomeLocal"));
+                        end3Rua = enderecos.get(2).getString("rua");
+                        end3Num = enderecos.get(2).getString("numero");
+
+                    }
                 }
 
-                if (enderecoSup>1 ){
-
-                    binding.btnEndereco2.setVisibility(View.VISIBLE);
-                    binding.btnEndereco2.setText(enderecos.get(1).getString("nomeLocal"));
-                    end2Rua = enderecos.get(1).getString("rua");
-                    end2Num = enderecos.get(1).getString("numero");
-                }
-
-                if (enderecoSup>2 ){
-
-                    binding.btnEndereco3.setVisibility(View.VISIBLE);
-                    binding.btnEndereco3.setText(enderecos.get(2).getString("nomeLocal"));
-                    end3Rua = enderecos.get(2).getString("rua");
-                    end3Num = enderecos.get(2).getString("numero");
-
-                }
 
             }
         });

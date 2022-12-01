@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.laris.Model.Colaborador;
+import com.example.laris.Task.TaskActivity;
 import com.example.laris.databinding.ActivityRequestServiceBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -108,9 +109,10 @@ public class RequestServiceActivity extends AppCompatActivity {
                 profissao = "Faxineiro";
             }
 
+            id = colaborador1.getId();
         }
 
-        id = colaborador1.getId();
+
 
         
 
@@ -211,7 +213,7 @@ public class RequestServiceActivity extends AppCompatActivity {
 
     public void enviaDados(String nomeUser){
 
-        Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
 
 
         String descricao = binding.etDescricao.getText().toString();
@@ -254,7 +256,10 @@ public class RequestServiceActivity extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         Log.d("db", "Sucesso ao salvar dados");
                         Toast.makeText(RequestServiceActivity.this, "Serviço Solicitado", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), TaskActivity.class);
+                        startActivity(intent);
                         finish();
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
