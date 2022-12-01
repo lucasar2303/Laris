@@ -48,6 +48,7 @@ public class RequestServiceActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -225,6 +226,7 @@ public class RequestServiceActivity extends AppCompatActivity {
         String filename = UUID.randomUUID().toString();
 
 
+        atividade.put("idTask", filename);
         atividade.put("idUser", userId);
         atividade.put("idColab", id);
         atividade.put("nomeUser", nomeUser);

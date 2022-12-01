@@ -135,7 +135,7 @@ public class MapFragment extends Fragment {
                 mMap.addMarker(new MarkerOptions().position(locUser).title("Sua posição"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(locUser));
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(locUser, 16));
-                Toast.makeText(getContext(), latitudeUser+"", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(), latitudeUser+"", Toast.LENGTH_LONG).show();
 
             }
 

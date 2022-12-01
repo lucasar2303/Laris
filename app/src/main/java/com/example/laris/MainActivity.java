@@ -141,28 +141,38 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
 
-            collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+            FirebaseUser usuarioAtual = FirebaseAuth.getInstance().getCurrentUser();
+
+            if (usuarioAtual!=null){
+                collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 //                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
-                    colabsSup = value.getDocuments().size();
-                    colabs = value.getDocuments();
+                        if (value!=null){
+                            colabsSup = value.getDocuments().size();
+                            colabs = value.getDocuments();
 
-                    for (int i = 0; i <colabsSup; i++){
+                            for (int i = 0; i <colabsSup; i++){
 
-                        Colaborador colaborador1 = new Colaborador();
-                        colaborador1.setNome(colabs.get(i).getString("nome"));
-                        colaborador1.setContrato(colabs.get(i).getString("contrato"));
-                        colaborador1.setValor(colabs.get(i).getDouble("valor"));
-                        colaborador1.setProfissao(colabs.get(i).getString("profissao"));
-                        colaborador1.setId(colabs.get(i).getId());
+                                Colaborador colaborador1 = new Colaborador();
+                                colaborador1.setNome(colabs.get(i).getString("nome"));
+                                colaborador1.setContrato(colabs.get(i).getString("contrato"));
+                                colaborador1.setValor(colabs.get(i).getDouble("valor"));
+                                colaborador1.setProfissao(colabs.get(i).getString("profissao"));
+                                colaborador1.setId(colabs.get(i).getId());
 
-                        listColab.add(colaborador1);
+                                listColab.add(colaborador1);
+                            }
+                            carregarLista(listColab, "1");
+
+                        }
+
                     }
-                    carregarLista(listColab, "1");
+                });
+            }
 
-                }
-            });
+
+
         }
 
         binding.btnService.setOnClickListener(view -> newActivty(FilterHome.class));

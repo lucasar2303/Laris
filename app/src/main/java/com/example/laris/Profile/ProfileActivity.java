@@ -24,10 +24,12 @@ import android.widget.Toast;
 
 import com.example.laris.Address.AddressActivity;
 import com.example.laris.Login.LoginActivity;
+import com.example.laris.Login.WelcomeActivity;
 import com.example.laris.MainActivity;
 import com.example.laris.Notify.NotificationsActivity;
 import com.example.laris.Policy.TermsPolicyActivity;
 import com.example.laris.R;
+import com.example.laris.Task.TaskActivity;
 import com.example.laris.databinding.ActivityProfileBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,6 +47,8 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.UUID;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -68,6 +72,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding.layoutEditDados.setOnClickListener(view -> newActivty(ProfileEditActivity.class));
         binding.layoutTermos.setOnClickListener(view -> newActivty(TermsPolicyActivity.class));
         binding.layoutEndereco.setOnClickListener(view -> newActivty(AddressActivity.class));
+        binding.layoutAtividades.setOnClickListener(view -> newActivty(TaskActivity.class));
     }
 
     private void showDialogDelete(){
@@ -78,10 +83,13 @@ public class ProfileActivity extends AppCompatActivity {
         final AlertDialog alertDialog = builder.create();
 
         view.findViewById(R.id.btnSim).setOnClickListener(view12 -> {
-            FirebaseAuth.getInstance().signOut();
-            newActivty(LoginActivity.class);
-            finish();
-            alertDialog.dismiss();
+
+                    FirebaseAuth.getInstance().signOut();
+                    newActivty(WelcomeActivity.class);
+                    finish();
+                    alertDialog.dismiss();
+
+
         });
 
         view.findViewById(R.id.btnNao).setOnClickListener(view1 -> {

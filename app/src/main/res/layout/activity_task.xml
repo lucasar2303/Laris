@@ -44,6 +44,7 @@
         app:tint="@color/preto_1" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerTask"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginVertical="20dp"
