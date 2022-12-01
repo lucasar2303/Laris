@@ -36,6 +36,7 @@ public class SignupPhotoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivitySignupPhotoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

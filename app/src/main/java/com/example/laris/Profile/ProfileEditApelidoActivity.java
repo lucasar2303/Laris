@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.laris.R;
 import com.example.laris.databinding.ActivityProfileEditApelidoBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -36,6 +37,7 @@ public class ProfileEditApelidoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivityProfileEditApelidoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

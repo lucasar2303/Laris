@@ -53,6 +53,7 @@ public class FilterHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivityFilterHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         initDatePicker();

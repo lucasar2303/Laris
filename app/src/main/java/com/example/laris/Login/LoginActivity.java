@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.laris.MainActivity;
+import com.example.laris.R;
 import com.example.laris.Register.SignupPersonalActivity;
 import com.example.laris.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

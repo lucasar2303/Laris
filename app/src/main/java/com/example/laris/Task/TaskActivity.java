@@ -13,6 +13,7 @@ import com.example.laris.Adapter.TaskAdapter;
 import com.example.laris.MainActivity;
 import com.example.laris.Model.Colaborador;
 import com.example.laris.Model.Task;
+import com.example.laris.R;
 import com.example.laris.databinding.ActivityTaskBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -43,6 +44,7 @@ public class TaskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivityTaskBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -51,47 +53,53 @@ public class TaskActivity extends AppCompatActivity {
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                if (value!=null){
+
 //                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
-                listTasks.clear();
-                taskSup = value.getDocuments().size();
-                tasks = value.getDocuments();
+                    listTasks.clear();
+                    taskSup = value.getDocuments().size();
+                    tasks = value.getDocuments();
 
-                userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                binding.imgBack.setOnClickListener(view -> finish());
+                    binding.imgBack.setOnClickListener(view -> finish());
 
-                for (int i = 0; i <taskSup; i++){
-                    if (!userId.equals(tasks.get(i).getString("idUser"))){
+                    for (int i = 0; i <taskSup; i++){
+                        if (!userId.equals(tasks.get(i).getString("idUser"))){
 
-                    }else {
-                        Task task = new Task();
-                        task.setContrato(tasks.get(i).getString("contrato"));
-                        task.setDataEntrada(tasks.get(i).getString("dataEntrada"));
-                        task.setDataSaida(tasks.get(i).getString("dataSaida"));
-                        task.setDataVisita(tasks.get(i).getString("dataVisita"));
-                        task.setDescricao(tasks.get(i).getString("descricao"));
-                        task.setEndereco(tasks.get(i).getString("endereco"));
-                        task.setIdTask(tasks.get(i).getString("idTask"));
-                        task.setIdColab(tasks.get(i).getString("idColab"));
-                        task.setIdUser(tasks.get(i).getString("idUser"));
-                        task.setNomeColab(tasks.get(i).getString("nomeColab"));
-                        task.setNomeUser(tasks.get(i).getString("nomeUser"));
-                        task.setPagamento(tasks.get(i).getString("pagamento"));
-                        task.setServico(tasks.get(i).getString("servico"));
-                        task.setStatus(tasks.get(i).getString("status"));
-                        task.setValorDiaria(tasks.get(i).getDouble("valorDiaria"));
-                        task.setValorTotal(tasks.get(i).getDouble("valorTotal"));
+                        }else {
+                            Task task = new Task();
+                            task.setContrato(tasks.get(i).getString("contrato"));
+                            task.setDataEntrada(tasks.get(i).getString("dataEntrada"));
+                            task.setDataSaida(tasks.get(i).getString("dataSaida"));
+                            task.setDataVisita(tasks.get(i).getString("dataVisita"));
+                            task.setDescricao(tasks.get(i).getString("descricao"));
+                            task.setEndereco(tasks.get(i).getString("endereco"));
+                            task.setIdTask(tasks.get(i).getString("idTask"));
+                            task.setIdColab(tasks.get(i).getString("idColab"));
+                            task.setIdUser(tasks.get(i).getString("idUser"));
+                            task.setNomeColab(tasks.get(i).getString("nomeColab"));
+                            task.setNomeUser(tasks.get(i).getString("nomeUser"));
+                            task.setPagamento(tasks.get(i).getString("pagamento"));
+                            task.setServico(tasks.get(i).getString("servico"));
+                            task.setStatus(tasks.get(i).getString("status"));
+                            task.setValorDiaria(tasks.get(i).getDouble("valorDiaria"));
+                            task.setValorTotal(tasks.get(i).getDouble("valorTotal"));
 
-                        listTasks.add(task);
+                            listTasks.add(task);
+                        }
+
+                    }
+
+                    if (listTasks.size()==0){
+                        Toast.makeText(TaskActivity.this, "Nenhuma atividade ativa", Toast.LENGTH_SHORT).show();
+                    }else{
+                        carregarLista(listTasks);
                     }
 
                 }
 
-                if (listTasks.size()==0){
-                    Toast.makeText(TaskActivity.this, "Nenhuma atividade ativa", Toast.LENGTH_SHORT).show();
-                }else{
-                    carregarLista(listTasks);
-                }
 
 
             }

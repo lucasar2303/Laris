@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.example.laris.Notify.NotificationsActivity;
 import com.example.laris.Profile.ProfileEditActivity;
+import com.example.laris.R;
 import com.example.laris.databinding.ActivityTermsPolicyBinding;
 
 public class TermsPolicyActivity extends AppCompatActivity {
@@ -16,6 +17,7 @@ public class TermsPolicyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivityTermsPolicyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

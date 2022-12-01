@@ -8,6 +8,7 @@ import android.graphics.text.LineBreaker;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.example.laris.R;
 import com.example.laris.databinding.ActivityPrivacyBinding;
 
 public class PrivacyActivity extends AppCompatActivity {
@@ -17,6 +18,7 @@ public class PrivacyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivityPrivacyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

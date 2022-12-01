@@ -36,6 +36,7 @@ public class AddressActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivityAddressBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -135,62 +136,66 @@ public class AddressActivity extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 //                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
-                enderecoSup = value.getDocuments().size();
-                enderecos = value.getDocuments();
+                if (value!=null){
+                    enderecoSup = value.getDocuments().size();
+                    enderecos = value.getDocuments();
 
-                if (enderecoSup>0 ){
+                    if (enderecoSup>0 ){
 
-                    binding.layoutEnd1.setVisibility(View.VISIBLE);
-                    binding.tvNome1.setText(enderecos.get(0).getString("nomeLocal"));
+                        binding.layoutEnd1.setVisibility(View.VISIBLE);
+                        binding.tvNome1.setText(enderecos.get(0).getString("nomeLocal"));
 
-                    binding.tvEndereco1.setText(enderecos.get(0).getString("rua") + ", " + enderecos.get(0).getString("numero"));
-                    binding.imgEdit1.setOnClickListener(view -> {
-                        Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                        intent.putExtra("endereco", value.getDocuments().get(0).getId());
-                        startActivity(intent);
-                        finish();
-                    });
+                        binding.tvEndereco1.setText(enderecos.get(0).getString("rua") + ", " + enderecos.get(0).getString("numero"));
+                        binding.imgEdit1.setOnClickListener(view -> {
+                            Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
+                            intent.putExtra("endereco", value.getDocuments().get(0).getId());
+                            startActivity(intent);
+                            finish();
+                        });
 
+
+                    }
+
+                    if (enderecoSup>1 ){
+
+                        binding.layoutEnd2.setVisibility(View.VISIBLE);
+                        binding.tvNome2.setText(enderecos.get(1).getString("nomeLocal"));
+
+                        binding.tvEndereco2.setText(enderecos.get(1).getString("rua") + ", " + enderecos.get(1).getString("numero"));
+                        binding.imgEdit2.setOnClickListener(view -> {
+                            Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
+                            intent.putExtra("endereco", value.getDocuments().get(1).getId());
+                            startActivity(intent);
+                            finish();
+                        });
+
+
+                    }
+
+                    if (enderecoSup>2 ){
+
+                        binding.layoutEnd3.setVisibility(View.VISIBLE);
+                        binding.tvNome3.setText(enderecos.get(2).getString("nomeLocal"));
+
+                        binding.tvEndereco3.setText(enderecos.get(2).getString("rua") + ", " + enderecos.get(2).getString("numero"));
+                        binding.imgEdit3.setOnClickListener(view -> {
+                            Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
+                            intent.putExtra("endereco", value.getDocuments().get(2).getId());
+                            startActivity(intent);
+                            finish();
+                        });
+
+
+                    }
+
+                    if (enderecoSup>=3){
+                        binding.tvAdd.setVisibility(View.GONE);
+                    }else{
+                        binding.tvAdd.setVisibility(View.VISIBLE);
+                    }
 
                 }
 
-                if (enderecoSup>1 ){
-
-                    binding.layoutEnd2.setVisibility(View.VISIBLE);
-                    binding.tvNome2.setText(enderecos.get(1).getString("nomeLocal"));
-
-                    binding.tvEndereco2.setText(enderecos.get(1).getString("rua") + ", " + enderecos.get(1).getString("numero"));
-                    binding.imgEdit2.setOnClickListener(view -> {
-                        Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                        intent.putExtra("endereco", value.getDocuments().get(1).getId());
-                        startActivity(intent);
-                        finish();
-                    });
-
-
-                }
-
-                if (enderecoSup>2 ){
-
-                    binding.layoutEnd3.setVisibility(View.VISIBLE);
-                    binding.tvNome3.setText(enderecos.get(2).getString("nomeLocal"));
-
-                    binding.tvEndereco3.setText(enderecos.get(2).getString("rua") + ", " + enderecos.get(2).getString("numero"));
-                    binding.imgEdit3.setOnClickListener(view -> {
-                        Intent intent = new Intent(getApplicationContext(), AddAddressActivity.class);
-                        intent.putExtra("endereco", value.getDocuments().get(2).getId());
-                        startActivity(intent);
-                        finish();
-                    });
-
-
-                }
-
-                if (enderecoSup>=3){
-                    binding.tvAdd.setVisibility(View.GONE);
-                }else{
-                    binding.tvAdd.setVisibility(View.VISIBLE);
-                }
 
             }
         });

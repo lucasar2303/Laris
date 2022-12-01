@@ -17,8 +17,8 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityWelcomeBinding.inflate(getLayoutInflater());
         setTheme(R.style.Theme_Laris);
+        binding = ActivityWelcomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.btnEntrar.setOnClickListener(new View.OnClickListener() {

@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.laris.R;
 import com.example.laris.databinding.ActivityProfileEditEmailBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +32,7 @@ public class ProfileEditEmailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivityProfileEditEmailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

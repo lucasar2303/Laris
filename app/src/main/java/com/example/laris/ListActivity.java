@@ -41,6 +41,7 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivityListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -54,22 +55,27 @@ public class ListActivity extends AppCompatActivity {
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                listColab.clear();
 
-                colabsSup = value.getDocuments().size();
-                colabs = value.getDocuments();
+                if (value!=null){
 
-                for (int i = 0; i <colabsSup; i++){
+                    listColab.clear();
 
-                    Colaborador colaborador1 = new Colaborador();
-                    colaborador1.setNome(colabs.get(i).getString("nome"));
-                    colaborador1.setContrato(colabs.get(i).getString("contrato"));
-                    colaborador1.setValor(colabs.get(i).getDouble("valor"));
-                    colaborador1.setProfissao(colabs.get(i).getString("profissao"));
+                    colabsSup = value.getDocuments().size();
+                    colabs = value.getDocuments();
 
-                    listColab.add(colaborador1);
+                    for (int i = 0; i <colabsSup; i++){
+
+                        Colaborador colaborador1 = new Colaborador();
+                        colaborador1.setNome(colabs.get(i).getString("nome"));
+                        colaborador1.setContrato(colabs.get(i).getString("contrato"));
+                        colaborador1.setValor(colabs.get(i).getDouble("valor"));
+                        colaborador1.setProfissao(colabs.get(i).getString("profissao"));
+
+                        listColab.add(colaborador1);
+                    }
+                    carregarLista(listColab, "2");
+
                 }
-                carregarLista(listColab, "2");
 
             }
         });

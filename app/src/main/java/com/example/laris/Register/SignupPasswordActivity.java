@@ -26,6 +26,7 @@ public class SignupPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivitySignupPasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

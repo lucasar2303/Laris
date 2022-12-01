@@ -14,6 +14,7 @@ import com.example.laris.Api.CEPService;
 import com.example.laris.Model.CEP;
 import com.example.laris.Model.Endereco;
 import com.example.laris.Profile.ProfileEditApelidoActivity;
+import com.example.laris.R;
 import com.example.laris.databinding.ActivityAddAddressBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -56,6 +57,7 @@ public class AddAddressActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivityAddAddressBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -237,32 +239,35 @@ public class AddAddressActivity extends AppCompatActivity {
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-//                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
-                enderecoSup = value.getDocuments().size();
-                enderecosDocuments = value.getDocuments();
+                if (value!=null){
+                    //                binding.etComplemento.setText(value.getDocuments().get(0).getString("nomeLocal"));
+                    enderecoSup = value.getDocuments().size();
+                    enderecosDocuments = value.getDocuments();
 
-                String[] dados = new String[enderecoSup];
+                    String[] dados = new String[enderecoSup];
 
-                for (int i=0; i<enderecoSup; i++){
-                    dados[i] = enderecosDocuments.get(i).getId();
-                }
-                List<String> listDados = Arrays.asList(dados);
+                    for (int i=0; i<enderecoSup; i++){
+                        dados[i] = enderecosDocuments.get(i).getId();
+                    }
+                    List<String> listDados = Arrays.asList(dados);
 
                     if (!listDados.contains("3")){
-                            enderecoSup1="3";
-                     }
+                        enderecoSup1="3";
+                    }
                     if (!listDados.contains("2")){
-                            enderecoSup1="2";
-                     }
+                        enderecoSup1="2";
+                    }
                     if (!listDados.contains("1")){
-                            enderecoSup1="1";
-                     }
+                        enderecoSup1="1";
+                    }
 
 
 
 
 
 
+
+                }
 
 
             }

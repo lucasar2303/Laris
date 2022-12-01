@@ -69,6 +69,7 @@ public class SignupConfirmActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Laris);
         binding = ActivitySignupConfirmBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
