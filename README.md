@@ -25,11 +25,13 @@ O desenvolvimento será feito com Android Studio, como linguagem principal o Jav
 
 Dentro do aplicativo o cliente poderá buscar pelo serviço que deseja, a partir de um endereço. e assim que encontrar o colaborador que preferir, pode solicitar o serviço.
 
+** O projeto ainda está em fase inicial de desenvolvimento **
+
 ---
 
 ## 🚀 Ferramentas utilizadas
 
-O projeto foi desenvolvido utilizando as seguintes Ferramentas:
+O projeto está sendo desenvolvido utilizando as seguintes Ferramentas:
 
 - Android Studio
 - Java
